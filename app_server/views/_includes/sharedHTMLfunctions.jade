@@ -1,0 +1,5 @@
+mixin outputRating(rating)
+  - for (var i = 1; i <= rating; i++)
+    span.fa.fa-star.fa-lg.text-warning
+  - for (i = rating; i < 5; i++)
+    span.fa.fa-star-o.fa-lg.text-warning
