@@ -1,0 +1,79 @@
+extends layout
+
+block content
+  .row.page-header
+    .col-lg-12
+      h1 Matna BBQ
+  .row
+    .col-xs-12.col-md-9
+      .row
+        .col-xs-12.col-sm-6
+          p.rating
+            span.fa.fa-star.text-warning
+            span.fa.fa-star.text-warning
+            span.fa.fa-star.text-warning
+            span.fa.fa-star.text-warning
+            span.fa.fa-star-o.text-warning
+          p 500 S Main St, Las Vegas, NV 89101
+          .panel.panel-primary
+            .panel-heading
+              h2.panel-title Opening Hours
+            .panel-body
+              p Monday - Friday : 11:00am - 11:00pm
+              p Saturday : 11:00am - 2:00am
+              p Sunday : 11:00am - 10:00pm
+          .panel.panel-primary
+            .panel-heading
+              h2.panel-title Features
+            .panel-body
+              span.label.label-warning AYCE
+              | &nbsp;
+              span.label.label-warning Charcoal
+              | &nbsp;
+              span.label.label-warning Premium Beef
+              | &nbsp;
+              span.label.label-warning Pork
+              | &nbsp;
+        .col-xs-12.col-sm-6.location-map
+          .panel.panel-primary
+            .panel-heading
+              h2.panel-title Location Map
+            .panel-body
+              img.img-responsive.img-rounded(src="http://maps.googleapis.com/maps/api/staticmap?center=36.167154,-115.150136&zoom=15&size=400x350&sensor=false&markers=36.167154,-115.150136&scale=2")
+      .row
+        .col-xs-12
+          .panel.panel-primary.review-panel
+            .panel-heading
+              a.btn.btn-warning.pull-right(href="/location/review/new") Add Review
+              h2.panel-title Reviews
+            .panel-body.review-container
+              .row
+                .review
+                  .well.well-sm.review-header
+                    span.rating
+                      span.fa.fa-star.text-warning
+                      span.fa.fa-star.text-warning
+                      span.fa.fa-star.text-warning
+                      span.fa.fa-star-o.text-warning
+                      span.fa.fa-star-o.text-warning
+                    span.reviewAuthor Flubby Lee
+                    small.reviewTimestamp February 18, 2016
+                  .col-xs-12
+                    p Good quality meat but little pricey. I highly recommend prime ribs. Sooo goood!! Service was okay..
+              .row
+                .review
+                  .well.well-sm.review-header
+                    span.rating
+                      span.fa.fa-star.text-warning
+                      span.fa.fa-star.text-warning
+                      span.fa.fa-star.text-warning
+                      span.fa.fa-star.text-warning
+                      span.fa.fa-star.text-warning
+                    span.reviewAuthor Pil Kim
+                    small.reviewTimestamp February 20, 2016
+                  .col-xs-12
+                    p Cannot find anything negative about this place. Fair price and good quality food! Can't wait to go back.
+    .col-xs-12.col-md-3
+      p.lead Matna BBQ is listed on KBBQ.SPACE because is has great selection of fresh meat, veggies and seafood.
+      p If you liked the restaurant, or if you didn't, please leave a review to help others like you.
+   
