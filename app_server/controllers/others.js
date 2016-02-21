@@ -1,4 +1,7 @@
 // Get about page //
 module.exports.about = function(req, res){
-    res.render("aboutus", {title: "About" });
+    res.render("aboutus", {
+        title: "About KBBQ.SPACE",
+        content: "KBBQ.SPACE was built to help you find the right Korean barbecue place to fulfill your KBBQ cravings.\n\nBacon ipsum dolor amet swine bacon jerky pastrami kevin. Turkey prosciutto venison short ribs doner ham hock cow jerky shoulder shankle fatback. Beef ribs short loin tongue, beef pork loin turkey pork belly ham hock jowl ground round corned beef shank short ribs leberkas brisket. Beef swine shank, leberkas capicola corned beef ham salami sirloin hamburger alcatra brisket.\n\nSalami landjaeger turducken shoulder, tenderloin ham beef leberkas jowl kielbasa shank pancetta capicola. Bacon picanha tenderloin ball tip, filet mignon landjaeger turkey kevin beef ribs hamburger pancetta. Ribeye landjaeger picanha hamburger turducken prosciutto frankfurter kielbasa bresaola ham beef flank venison. Doner flank boudin, shoulder chuck beef spare ribs meatloaf picanha tenderloin meatball tongue alcatra pancetta. Swine cupim pancetta prosciutto pastrami shank. Meatball andouille bacon frankfurter, ribeye flank salami beef meatloaf strip steak corned beef ground round pancetta."
+    });
 };

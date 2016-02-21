@@ -3,7 +3,7 @@ extends layout
 block content
   .row.page-header
     .col-lg-12.col-md-6
-      h1 Review Matna BBQ
+      h1= pageHeader.title
   .container
     .col-xs-12.col-md-6
       form.form-horizontal(action="/location", method="GET", role="form")

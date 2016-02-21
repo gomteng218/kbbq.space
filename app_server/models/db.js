@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
-//var dbURI = "mongodb://localhost/kbbqspace";
-var dbURI = process.env.MONGOLAB_URI;
+var dbURI = "mongodb://localhost/kbbqspace";
+//var dbURI = process.env.MONGOLAB_URI;
 
 mongoose.connect(dbURI);
 
@@ -15,7 +15,7 @@ mongoose.connection.on("disconnected", function(){
     console.log("Mongoose disconnected");
 });
 
-
+/*
 gracefulShutdown = function(msg, callback){
     mongoose.connection.close(function(){
         console.log("Mongoose disconnected through " + msg);
@@ -34,6 +34,7 @@ process.on("SIGTERM", function(){
         process.exit(0);
     });
 });
+*/
 
 
 require("./locations");
