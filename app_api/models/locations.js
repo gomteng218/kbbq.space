@@ -50,3 +50,4 @@ var locationSchema = new mongoose.Schema({
 });
 
 
+mongoose.model("Location", locationSchema);

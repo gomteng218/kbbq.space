@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
-//var dbURI = "mongodb://localhost/kbbqspace";
-var dbURI = process.env.MONGOLAB_URI;
+var dbURI = "mongodb://localhost/kbbqspace";
+//var dbURI = process.env.MONGOLAB_URI;
 
 mongoose.connect(dbURI);
 
