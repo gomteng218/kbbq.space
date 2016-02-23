@@ -1,7 +1,7 @@
 var request = require("request");
-/*var apiOptions = {
-    server: "http://localhost:3000"
-};*/
+//var apiOptions = {
+//    server: "http://localhost:3000"
+//};
 var apiOptions = {
     server: "https://damp-wildwood-88281.herokuapp.com"
 }; 
@@ -15,7 +15,8 @@ var _formatDistance = function (distance) {
     // ensuring a number as a parameter
   if (distance && _isNumeric(distance)) {
       // If distance is more than 1 mile, round to one decimal place and add mi unit. 1 mi = 1609.444m
-    if (distance > 1609.444) {
+      // 300ft = 152.4m
+    if (distance > 152.4) {
       numDistance = parseFloat(distance/1609.444).toFixed(1);
       unit = ' mi';
     } else {
