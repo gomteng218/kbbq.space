@@ -3,7 +3,7 @@ var request = require("request");
     server: "http://localhost:3000"
 };*/
 var apiOptions = {
-    server: "https://damp-wildwood-88281.herokuapp.com";
+    server: "https://damp-wildwood-88281.herokuapp.com"
 }; 
 
 var _isNumeric = function(n) {
