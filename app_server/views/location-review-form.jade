@@ -6,7 +6,9 @@ block content
       h1= pageHeader.title
   .container
     .col-xs-12.col-md-6
-      form.form-horizontal(action="/location", method="GET", role="form")
+      form.form-horizontal(action="", method="POST", role="form")
+        - if (error == "val")
+          .alert.alert-danger(role="alert") All fields required. Please try again.
         .form-group
           label.col-xs-12.col-sm-2.control-label(for="name") Name
           .col-xs-12.col-sm-10

@@ -6,8 +6,10 @@ var sendJSONResponse = function(res, status, content) {
   res.json(content);
 };
 
-var ourPlanet = (function(){
-    var earthRadius = 3959; // in miles
+// geoNear now outputs in meters, not in radians so no longer needed
+
+/*var ourPlanet = (function(){
+    var earthRadius = 6371; // in miles 3959
     // Convert radians to distance
     var getDistanceFromRads = function(rads){
         return parseFloat(rads * earthRadius);
@@ -20,7 +22,8 @@ var ourPlanet = (function(){
         getDistanceFromRads: getDistanceFromRads,
         getRadsFromDistance: getRadsFromDistance
     };
-})();
+})();*/
+
 
 
 // SHOW LOCATIONS BY DISTANCE
@@ -34,21 +37,21 @@ module.exports.locationsListByDistance = function(req, res) {
     };
     var geoOptions = {
         spherical: true,
-        maxDistance: ourPlanet.getRadsFromDistance(maxDistance),
+        maxDistance: maxDistance,
         num: 10
     };
-    if (!lng || !lat || !maxDistance) {
-        console.log('locationsListByDistance missing params');
-        sendJSONrResponse(res, 404, {
-          "message": "lng, lat and maxDistance query parameters are all required"
-        });
-        return;
-    }
+        if ((!lng && lng!==0) || (!lat && lat!==0) || ! maxDistance) {
+            console.log("locationsListByDistance missing param");
+            sendJSONResponse(res, 404, {
+              "message": "lng, lat and maxDistance query parameters are all required"
+            });
+            return;
+        }
     Place.geoNear(point, geoOptions, function(err, results, stats){
         var locations;
             console.log('Geo Results', results);
             console.log('Geo stats', stats);
-        if (err) {
+        if (err) {  
               console.log('geoNear error:', err);
               sendJSONResponse(res, 404, err);
         } else {
@@ -56,6 +59,21 @@ module.exports.locationsListByDistance = function(req, res) {
               sendJSONResponse(res, 200, locations);
         }
     });
+};
+
+var buildLocationList = function(req, res, results, stats) {
+  var locations = [];
+  results.forEach(function(doc) {
+    locations.push({
+      distance: doc.dis,
+      name: doc.obj.name,
+      address: doc.obj.address,
+      rating: doc.obj.rating,
+      features: doc.obj.features,
+      _id: doc.obj._id
+    });
+  });
+  return locations;
 };
 
 // READ LOCATION
@@ -99,6 +117,11 @@ module.exports.locationsCreate = function(req, res) {
       opening: req.body.opening2,
       closing: req.body.closing2,
       closed: req.body.closed2,
+    } , {
+      days: req.body.days3,
+      opening: req.body.opening3,
+      closing: req.body.closing3,
+      closed: req.body.closed3,
     }]
   }, function(err, location) {
     if (err) {
@@ -149,6 +172,11 @@ module.exports.locationsUpdateOne = function(req, res) {
           opening: req.body.opening2,
           closing: req.body.closing2,
           closed: req.body.closed2,
+        }, {
+          days: req.body.days3,
+          opening: req.body.opening3,
+          closing: req.body.closing3,
+          closed: req.body.closed3,
         }];
       // save
         location.save(function(err, location) {
