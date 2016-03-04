@@ -42,12 +42,12 @@ var geolocation = function() {
 
 var locationListCtrl = function($scope, kbbqData, geolocation) {
     $scope.message = "Checking your current location";
+    
     $scope.getData = function(position){
         var lat = position.coords.latitude,
             lng = position.coords.longitude;
         $scope.message = "Searching for nearby locations";
         kbbqData.locationByCoords(lat, lng)
-    kbbqData
         .success(function(data){
             $scope.message = data.length > 0 ? "": "No Nearby Locations Found";
             $scope.data = { locations: data };
