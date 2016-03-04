@@ -31,3 +31,11 @@ a:hover {
 .reviewTimestamp {
     color: #999;
 }
+
+#filter {
+    margin: 0 0 10px 5px;
+}
+
+.label {
+    margin-right: 3px;
+}

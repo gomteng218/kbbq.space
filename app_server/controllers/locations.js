@@ -1,7 +1,7 @@
 var request = require("request");
-//var apiOptions = {
-//    server: "http://localhost:3000"
-//};
+/*var apiOptions = {
+    server: "http://localhost:3000"
+}; */
 var apiOptions = {
     server: "https://damp-wildwood-88281.herokuapp.com"
 }; 
@@ -48,50 +48,19 @@ var _showError = function (req, res, status) {
 };
 
 var renderHomepage = function(req, res, responseBody){
-    var message;
-      if (!(responseBody instanceof Array)) {
-        message = "API lookup error";
-        responseBody = [];
-      } else {
-        if (!responseBody.length) {
-          message = "Uh oh, no place found nearby";
-        }
-      }
     res.render("locations-list", {
         title: "KBBQ.SPACE - Find the best KBBQ",
         pageHeader: {
             strapline: "Find Nearby KBBQ"
         },
-        sidebar: "Craving good Korean BBQ? KBBQ.SPACE helps you find Korean BBQ restaurants near you! Let KBBQ.SPACE help you find the restaurant you are looking for.",
-        locations: responseBody,
-        message: message
+        sidebar: "Craving good Korean BBQ? KBBQ.SPACE helps you find Korean BBQ restaurants near you! Let KBBQ.SPACE help you find the restaurant you are looking for."
     });
 };
 
+
 // Get home page //
 module.exports.homelist = function(req, res){
-    var path = "/api/locations";
-    // Set request options: URL, method, JSON body, hard-coded string param
-    var requestOptions = {
-        url: apiOptions.server + path,
-        method: "GET",
-        json: {},
-        qs: {
-            lng: -115.081697,
-            lat: 36.055400,
-            maxDistance: 100000 // 100 km
-        }
-    };
-    request(requestOptions, function (err, response, body){
-      var i, data;
-      data = body;
-      if (response.statusCode === 200 && data.length) {
-        for (i = 0; i < data.length; i++) {
-          data[i].distance = _formatDistance(data[i].distance);
-        }
-      }
-      renderHomepage(req, res, data);
-   });
+    renderHomepage(req, res);
 };
 
 var getLocationInfo = function(req, res, callback){
@@ -139,7 +108,8 @@ var renderReviewForm = function (req, res, locDetail) {
   res.render("location-review-form", {
     title: "Review " + locDetail.name + " on KBBQ.SPACE",
     pageHeader: { title: "Review " + locDetail.name },
-    error: req.query.err
+    error: req.query.err,
+    url: req.originalUrl
   });
 };   
     
