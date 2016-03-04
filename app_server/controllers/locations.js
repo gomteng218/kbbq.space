@@ -1,10 +1,10 @@
 var request = require("request");
-var apiOptions = {
-    server: "http://localhost:3000"
-}; 
 /*var apiOptions = {
-    server: "https://damp-wildwood-88281.herokuapp.com"
+    server: "http://localhost:3000"
 }; */
+var apiOptions = {
+    server: "https://damp-wildwood-88281.herokuapp.com"
+}; 
 
 var _isNumeric = function(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
